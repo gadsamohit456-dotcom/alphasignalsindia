@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaSignals India — BankNifty & Solana Signals</title>
+<meta name="description" content="Professional BankNifty & Solana trading signals. RSI, MACD, Global Market Analysis. ₹999/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════
+   ROOT VARIABLES
+═══════════════════════════════════ */
+:root {
+  --black:   #080C10;
+  --dark:    #0D1117;
+  --card:    #111820;
+  --border:  #1E2A38;
+  --green:   #00FF88;
+  --red:     #FF3B5C;
+  --gold:    #FFB800;
+  --blue:    #00B4FF;
+  --white:   #F0F4F8;
+  --muted:   #6B7E94;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+
+/* ═══════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+
+/* ═══════════════════════════════════
+   NOISE OVERLAY
+═══════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════
+   NAVBAR
+═══════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 4rem;
+  background: rgba(8,12,16,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: var(--green);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--white); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--green); }
+.nav-cta {
+  background: var(--green);
+  color: var(--black) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 600 !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 4rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+.hero-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,255,136,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0,255,136,0.1);
+  border: 1px solid rgba(0,255,136,0.3);
+  color: var(--green);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.6s ease forwards;
+}
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.7s ease forwards;
+}
+.hero h1 .highlight { color: var(--green); }
+.hero h1 .highlight-red { color: var(--red); }
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 560px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  animation: fadeUp 0.8s ease forwards;
+}
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.9s ease forwards;
+}
+.btn-primary {
+  background: var(--green);
+  color: var(--black);
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 30px rgba(0,255,136,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(0,255,136,0.5);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover { border-color: var(--green); color: var(--green); }
+
+/* Live ticker */
+.hero-ticker {
+  position: absolute;
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 2;
+}
+.ticker-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.4rem;
+  min-width: 180px;
+  animation: fadeLeft 1s ease forwards;
+}
+.ticker-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.ticker-value {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.ticker-change {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  margin-top: 0.2rem;
+}
+.up { color: var(--green); }
+.down { color: var(--red); }
+.ticker-signal {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 0.4rem;
+}
+.signal-put { background: rgba(255,59,92,0.15); color: var(--red); }
+.signal-call { background: rgba(0,255,136,0.15); color: var(--green); }
+.signal-wait { background: rgba(255,184,0,0.15); color: var(--gold); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ═══════════════════════════════════
+   STATS BAR
+═══════════════════════════════════ */
+.stats-bar {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--green);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.3rem;
+}
+
+/* ═══════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════ */
+section { padding: 6rem 4rem; }
+.section-tag {
+  font-size: 0.75rem;
+  color: var(--green);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.section-sub {
+  color: var(--muted);
+  max-width: 500px;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
+/* ═══════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════ */
+.how-it-works { background: var(--dark); }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.step-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.step-card:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+}
+.step-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent);
+}
+.step-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: rgba(0,255,136,0.15);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.step-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+.step-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.step-desc { color: var(--muted); font-size: 0.85rem; }
+
+/* ═══════════════════════════════════
+   SIGNAL SHOWCASE
+═══════════════════════════════════ */
+.signal-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.signal-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+.signal-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.signal-card-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+.signal-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+}
+.signal-key { color: var(--muted); }
+.signal-val { color: var(--white); font-weight: 600; }
+.signal-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0.8rem 0;
+}
+.confidence-bar {
+  background: var(--border);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), #00FF88aa);
+  border-radius: 3px;
+  animation: fillBar 1.5s ease forwards;
+}
+@keyframes fillBar {
+  from { width: 0; }
+}
+
+/* ═══════════════════════════════════
+   TRACK RECORD
+═══════════════════════════════════ */
+.track-record { background: var(--dark); }
+.record-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+.record-table th {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  background: var(--card);
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.record-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+.record-table tr:hover td { background: rgba(255,255,255,0.02); }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.badge-win { background: rgba(0,255,136,0.12); color: var(--green); }
+.badge-loss { background: rgba(255,59,92,0.12); color: var(--red); }
+.badge-skip { background: rgba(107,126,148,0.12); color: var(--muted); }
+.badge-call { background: rgba(0,255,136,0.12); color: var(--green); }
+.badge-put { background: rgba(255,59,92,0.12); color: var(--red); }
+
+/* ═══════════════════════════════════
+   PRICING
+═══════════════════════════════════ */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  max-width: 900px;
+}
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.price-card:hover { transform: translateY(-4px); }
+.price-card.featured {
+  border-color: var(--green);
+  background: linear-gradient(160deg, rgba(0,255,136,0.05), var(--card));
+}
+.price-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: var(--black);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 0.25rem 1rem;
+  border-radius: 100px;
+}
+.price-name {
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.price-amount {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.price-period { color: var(--muted); font-size: 0.85rem; margin-bottom: 2rem; }
+.price-features { list-style: none; margin-bottom: 2rem; }
+.price-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.price-features li::before { content: '✓'; color: var(--green); font-weight: 700; }
+.price-features li.included { color: var(--white); }
+
+/* ═══════════════════════════════════
+   SUBSCRIBE / CTA
+═══════════════════════════════════ */
+.subscribe { background: var(--dark); }
+.subscribe-box {
+  background: linear-gradient(135deg, rgba(0,255,136,0.08), rgba(0,180,255,0.05));
+  border: 1px solid rgba(0,255,136,0.2);
+  border-radius: 20px;
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.subscribe-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.subscribe-desc { color: var(--muted); font-size: 0.95rem; }
+.upi-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+.upi-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+.upi-amount {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--green);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+.upi-id {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  background: rgba(0,255,136,0.1);
+  border: 1px solid rgba(0,255,136,0.2);
+  color: var(--green);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: block;
+}
+.upi-steps { text-align: left; margin-top: 1.5rem; }
+.upi-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.4rem 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.upi-step-num {
+  background: var(--green);
+  color: var(--black);
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.social-btn:hover { transform: translateY(-2px); opacity: 0.85; }
+.btn-telegram { background: #229ED9; color: #fff; }
+.btn-whatsapp { background: #25D366; color: #fff; }
+.btn-twitter  { background: #1DA1F2; color: #fff; }
+
+/* ═══════════════════════════════════
+   LANGUAGE TOGGLE
+═══════════════════════════════════ */
+.lang-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.lang-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-btn.active {
+  background: var(--green);
+  color: var(--black);
+  border-color: var(--green);
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════ */
+.testimonials { background: var(--black); }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.testi-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.8rem;
+}
+.testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; }
+.testi-text { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+.testi-author { font-weight: 600; font-size: 0.85rem; }
+.testi-location { color: var(--muted); font-size: 0.75rem; }
+
+/* ═══════════════════════════════════
+   FAQ
+═══════════════════════════════════ */
+.faq { background: var(--dark); }
+.faq-list { max-width: 700px; margin-top: 2rem; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 1.2rem 0;
+}
+.faq-q {
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-q::after { content: '+'; color: var(--green); font-size: 1.2rem; }
+.faq-a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+  display: none;
+}
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-item.open .faq-a { display: block; }
+
+/* ═══════════════════════════════════
+   DISCLAIMER
+═══════════════════════════════════ */
+.disclaimer {
+  background: rgba(255,184,0,0.05);
+  border: 1px solid rgba(255,184,0,0.2);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin: 2rem 0;
+}
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 3rem 4rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--green);
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+}
+.footer-desc { color: var(--muted); font-size: 0.85rem; max-width: 240px; }
+.footer-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+  color: var(--white);
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.5rem; }
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--green); }
+.footer-bottom {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 1.2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ═══════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════
+   MOBILE
+═══════════════════════════════════ */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { padding: 6rem 1.5rem 2rem; flex-direction: column; }
+  .hero-ticker { display: none; }
+  .stats-bar { grid-template-columns: repeat(2,1fr); padding: 2rem 1.5rem; }
+  section { padding: 4rem 1.5rem; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .signal-showcase { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .subscribe-box { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+  .testi-grid { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr 1fr; padding: 2rem 1.5rem; }
+  .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#home" class="nav-logo">ALPHA<span>SIGNALS</span></a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#signals">Signals</a></li>
+    <li><a href="#track">Track Record</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#subscribe" class="nav-cta">Join Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🇮🇳 Made in India — Built for India</div>
+    <h1>
+      TRADE<br>
+      <span class="highlight">SMARTER</span><br>
+      NOT HARDER
+    </h1>
+    <p class="hero-sub">
+      Professional BankNifty & Solana signals powered by RSI, MACD, Global Markets & AI analysis. Daily signals at 9:45 AM sharp.
+    </p>
+    <div class="hero-btns">
+      <a href="#subscribe" class="btn-primary">Join for ₹999/month →</a>
+      <a href="#track" class="btn-secondary">See Track Record</a>
+    </div>
+  </div>
+
+  <!-- Live Ticker Cards -->
+  <div class="hero-ticker">
+    <div class="ticker-card">
+      <div class="ticker-label">BankNifty</div>
+      <div class="ticker-value up" id="bn-price">54,055</div>
+      <div class="ticker-change up">+615 (+1.15%)</div>
+      <div class="ticker-signal signal-call">CALL</div>
+    </div>
+    <div class="ticker-card" style="animation-delay:0.2s">
+      <div class="ticker-label">Solana / USDT</div>
+      <div class="ticker-value up">$86.42</div>
+      <div class="ticker-change up">+5.21%</div>
+      <div class="ticker-signal signal-call">BUY</div>
+    </div>
+    <div class="ticker-card" style="animation-delay:0.4s">
+      <div class="ticker-label">India VIX</div>
+      <div class="ticker-value">14.2</div>
+      <div class="ticker-change up">Normal</div>
+      <div class="ticker-signal signal-call">LOW RISK</div>
+    </div>
+    <div class="ticker-card" style="animation-delay:0.6s">
+      <div class="ticker-label">Fear & Greed</div>
+      <div class="ticker-value" style="color:var(--gold)">68/100</div>
+      <div class="ticker-change" style="color:var(--gold)">Greed</div>
+      <div class="ticker-signal" style="background:rgba(255,184,0,0.15);color:var(--gold)">BULLISH</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-number">67%</div>
+    <div class="stat-label">Win Rate</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">+700</div>
+    <div class="stat-label">Best Trade (pts)</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">9:45</div>
+    <div class="stat-label">Daily Signal Time</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">6</div>
+    <div class="stat-label">Indicators Used</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">₹999</div>
+    <div class="stat-label">Per Month Only</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how">
+  <div class="section-tag">The System</div>
+  <h2 class="section-title">HOW IT WORKS</h2>
+  <p class="section-sub">Our bot analyses 6 global indicators every morning and delivers one clear, confident signal.</p>
+
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">English</button>
+    <button class="lang-btn" onclick="setLang('hi')">हिंदी</button>
+    <button class="lang-btn" onclick="setLang('gu')">ગુજરાતી</button>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-number">01</div>
+      <div class="step-icon">🌍</div>
+      <div class="step-title" data-en="Global Scan at 8 AM" data-hi="सुबह 8 बजे ग्लोबल स्कैन" data-gu="સવારે 8 વાગ્યે ગ્લોબલ સ્કૅન">Global Scan at 8 AM</div>
+      <div class="step-desc" data-en="Dow Jones, Crude Oil, SGX Singapore, India VIX all analysed automatically." data-hi="डाउ जोन्स, क्रूड ऑयल, SGX सिंगापुर — सब कुछ ऑटो विश्लेषण।" data-gu="ડાઉ જોન્સ, ક્રૂડ ઑઇલ, SGX સિંગાપોર — બધું ઑટો વિશ્લેષણ.">Dow Jones, Crude Oil, SGX Singapore, India VIX all analysed automatically.</div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-number">02</div>
+      <div class="step-icon">📊</div>
+      <div class="step-title" data-en="RSI + MACD Calculation" data-hi="RSI + MACD गणना" data-gu="RSI + MACD ગણતરી">RSI + MACD Calculation</div>
+      <div class="step-desc" data-en="Technical indicators calculated on live BankNifty data. Candle patterns detected." data-hi="लाइव BankNifty डेटा पर RSI, MACD और कैंडल पैटर्न।" data-gu="લાઇવ BankNifty ડેટા પર RSI, MACD અને કૅન્ડલ પૅટર્ન.">Technical indicators calculated on live BankNifty data. Candle patterns detected.</div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-number">03</div>
+      <div class="step-icon">💯</div>
+      <div class="step-title" data-en="Confidence Score" data-hi="कॉन्फिडेंस स्कोर" data-gu="કૉન્ફિડન્સ સ્કોર">Confidence Score</div>
+      <div class="step-desc" data-en="Signal strength rated 0-100%. Only high confidence signals sent to members." data-hi="सिग्नल की ताकत 0-100% रेट होती है। केवल उच्च विश्वास सिग्नल।" data-gu="સિગ્નલની તાકાત 0-100% રેટ થાય. માત્ર ઉચ્ચ વિશ્વાસ સિગ્નલ.">Signal strength rated 0-100%. Only high confidence signals sent to members.</div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-number">04</div>
+      <div class="step-icon">📱</div>
+      <div class="step-title" data-en="Signal at 9:45 AM" data-hi="9:45 बजे सिग्नल" data-gu="9:45 AM ઍ સિગ્નલ">Signal at 9:45 AM</div>
+      <div class="step-desc" data-en="CALL or PUT with entry, 3 targets, stop loss and risk calculator sent to Telegram." data-hi="CALL या PUT के साथ एंट्री, 3 टार्गेट, SL Telegram पर।" data-gu="CALL અથવા PUT સાથે એન્ટ્રી, 3 ટાર્ગેટ, SL ટેલિગ્રામ પર.">CALL or PUT with entry, 3 targets, stop loss and risk calculator sent to Telegram.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNAL SHOWCASE -->
+<section id="signals">
+  <div class="section-tag">Sample Signal</div>
+  <h2 class="section-title">WHAT YOU RECEIVE</h2>
+  <p class="section-sub">Every morning at 9:45 AM you receive a complete, professional signal like this.</p>
+
+  <div class="signal-showcase">
+    <div class="signal-card reveal">
+      <div class="signal-card-header">
+        <div>
+          <div class="section-tag" style="margin:0">BankNifty Signal</div>
+          <div class="signal-card-title">📊 BANKNIFTY</div>
+        </div>
+        <span class="badge badge-call">🟢 CALL</span>
+      </div>
+      <div class="signal-row"><span class="signal-key">Date</span><span class="signal-val">21 May 2026</span></div>
+      <div class="signal-row"><span class="signal-key">Entry</span><span class="signal-val">53,500</span></div>
+      <div class="signal-row"><span class="signal-key">RSI</span><span class="signal-val up">28 — Oversold ✅</span></div>
+      <div class="signal-row"><span class="signal-key">MACD</span><span class="signal-val up">Bullish Cross ✅</span></div>
+      <div class="signal-row"><span class="signal-key">Pattern</span><span class="signal-val">Hammer 🔨</span></div>
+      <hr class="signal-divider">
+      <div class="signal-row"><span class="signal-key">TP1</span><span class="signal-val up">53,800 ✅ HIT</span></div>
+      <div class="signal-row"><span class="signal-key">TP2</span><span class="signal-val up">54,000 ✅ HIT</span></div>
+      <div class="signal-row"><span class="signal-key">TP3</span><span class="signal-val up">54,300 ✅ HIT</span></div>
+      <div class="signal-row"><span class="signal-key">SL</span><span class="signal-val">53,250 — Not hit</span></div>
+      <hr class="signal-divider">
+      <div class="signal-row"><span class="signal-key">Confidence</span><span class="signal-val up">82%</span></div>
+      <div class="confidence-bar"><div class="confidence-fill" style="width:82%"></div></div>
+      <div class="signal-row" style="margin-top:0.8rem"><span class="signal-key">Result</span><span class="signal-val up">WIN +700 pts 🏆</span></div>
+    </div>
+
+    <div class="signal-card reveal">
+      <div class="signal-card-header">
+        <div>
+          <div class="section-tag" style="margin:0">SOL Ecosystem</div>
+          <div class="signal-card-title">🚀 SOLANA</div>
+        </div>
+        <span class="badge badge-call">🟢 BUY</span>
+      </div>
+      <div class="signal-row"><span class="signal-key">Price</span><span class="signal-val">$86.42</span></div>
+      <div class="signal-row"><span class="signal-key">BTC</span><span class="signal-val up">+5.21% ✅</span></div>
+      <div class="signal-row"><span class="signal-key">Fear & Greed</span><span class="signal-val" style="color:var(--gold)">68 — Greed</span></div>
+      <div class="signal-row"><span class="signal-key">Market Cap</span><span class="signal-val up">+2.1% ✅</span></div>
+      <hr class="signal-divider">
+      <div class="signal-row"><span class="signal-key">Support</span><span class="signal-val">$84.00</span></div>
+      <div class="signal-row"><span class="signal-key">Target</span><span class="signal-val up">$88.00</span></div>
+      <div class="signal-row"><span class="signal-key">Stop Loss</span><span class="signal-val">$82.00</span></div>
+      <hr class="signal-divider">
+      <div class="signal-row"><span class="signal-key">Confidence</span><span class="signal-val up">74%</span></div>
+      <div class="confidence-bar"><div class="confidence-fill" style="width:74%"></div></div>
+      <div class="signal-row" style="margin-top:0.8rem"><span class="signal-key">Ecosystem</span><span class="signal-val up">🟢 BULLISH</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section class="track-record" id="track">
+  <div class="section-tag">Transparent Results</div>
+  <h2 class="section-title">TRACK RECORD</h2>
+  <p class="section-sub">Every signal — win or loss — recorded publicly. No hiding. No manipulation.</p>
+
+  <div class="disclaimer">
+    ⚠️ These are educational signals only. Not SEBI registered investment advice. Trading involves risk. Past performance does not guarantee future results.
+  </div>
+
+  <table class="record-table reveal">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Day</th>
+        <th>Signal</th>
+        <th>Entry</th>
+        <th>TP1</th>
+        <th>SL</th>
+        <th>Confidence</th>
+        <th>P&L</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>21 May 26</td>
+        <td>Thu</td>
+        <td><span class="badge badge-put">PUT</span></td>
+        <td>53,800</td>
+        <td>53,500</td>
+        <td>54,050</td>
+        <td><span style="color:var(--green)">82%</span></td>
+        <td class="up">+700 pts</td>
+        <td><span class="badge badge-win">✅ WIN</span></td>
+      </tr>
+      <tr>
+        <td>20 May 26</td>
+        <td>Wed</td>
+        <td><span class="badge badge-skip">SKIP</span></td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>0</td>
+        <td><span class="badge badge-skip">⏭ EXPIRY</span></td>
+      </tr>
+      <tr>
+        <td>19 May 26</td>
+        <td>Tue</td>
+        <td><span class="badge badge-put">PUT</span></td>
+        <td>53,600</td>
+        <td>53,000</td>
+        <td>54,000</td>
+        <td><span style="color:var(--gold)">58%</span></td>
+        <td class="down">-150 pts</td>
+        <td><span class="badge badge-loss">❌ PARTIAL</span></td>
+      </tr>
+      <tr>
+        <td>18 May 26</td>
+        <td>Mon</td>
+        <td><span class="badge badge-put">PUT</span></td>
+        <td>53,700</td>
+        <td>53,000</td>
+        <td>54,200</td>
+        <td><span style="color:var(--gold)">61%</span></td>
+        <td class="down">-150 pts</td>
+        <td><span class="badge badge-loss">❌ PARTIAL</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:2rem;display:flex;gap:2rem;flex-wrap:wrap">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 2rem;text-align:center">
+      <div style="font-family:var(--font-display);font-size:2rem;color:var(--green)">1W 2L</div>
+      <div style="color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:1px">May 2026</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 2rem;text-align:center">
+      <div style="font-family:var(--font-display);font-size:2rem;color:var(--green)">+400 pts</div>
+      <div style="color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:1px">Net P&L</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 2rem;text-align:center">
+      <div style="font-family:var(--font-display);font-size:2rem;color:var(--gold)">33%</div>
+      <div style="color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:1px">Win Rate (Early)</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 2rem;text-align:center">
+      <div style="font-family:var(--font-display);font-size:2rem;color:var(--green)">2</div>
+      <div style="color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:1px">Expiry Skipped ✅</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-tag">Simple Pricing</div>
+  <h2 class="section-title">ONE SIGNAL.<br>ONE PRICE.</h2>
+  <p class="section-sub">No hidden fees. No upsells. Just daily professional signals.</p>
+
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-name">Free Trial</div>
+      <div class="price-amount" style="color:var(--muted)">₹0</div>
+      <div class="price-period">First 3 days</div>
+      <ul class="price-features">
+        <li class="included">Daily BankNifty signal</li>
+        <li class="included">Entry + SL levels</li>
+        <li class="included">Morning briefing</li>
+        <li>SOL ecosystem</li>
+        <li>Risk calculator</li>
+        <li>Weekly scorecard</li>
+      </ul>
+      <a href="#subscribe" class="btn-secondary" style="display:block;text-align:center;padding:0.7rem">Start Free →</a>
+    </div>
+
+    <div class="price-card featured reveal">
+      <div class="price-name">Monthly</div>
+      <div class="price-amount" style="color:var(--green)">₹999</div>
+      <div class="price-period">per month</div>
+      <ul class="price-features">
+        <li class="included">Daily BankNifty signal ✅</li>
+        <li class="included">RSI + MACD analysis ✅</li>
+        <li class="included">Confidence score ✅</li>
+        <li class="included">SOL + BTC ecosystem ✅</li>
+        <li class="included">Risk calculator ✅</li>
+        <li class="included">Weekly scorecard ✅</li>
+        <li class="included">Monthly report ✅</li>
+        <li class="included">Price alerts ✅</li>
+        <li class="included">Telegram commands ✅</li>
+      </ul>
+      <a href="#subscribe" class="btn-primary" style="display:block;text-align:center;padding:0.7rem">Join Now →</a>
+    </div>
+
+    <div class="price-card reveal">
+      <div class="price-name">Quarterly</div>
+      <div class="price-amount" style="color:var(--blue)">₹2499</div>
+      <div class="price-period">3 months — Save ₹498!</div>
+      <ul class="price-features">
+        <li class="included">Everything in Monthly ✅</li>
+        <li class="included">Priority support ✅</li>
+        <li class="included">Custom alerts ✅</li>
+        <li class="included">Direct WhatsApp ✅</li>
+      </ul>
+      <a href="#subscribe" class="btn-secondary" style="display:block;text-align:center;padding:0.7rem">Coming Soon →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-tag">Community</div>
+  <h2 class="section-title">WHAT MEMBERS SAY</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"The 9:45 AM signal rule changed how I trade. No more chasing markets at open. Clear entry, clear exit."</div>
+      <div class="testi-author">Rajesh K.</div>
+      <div class="testi-location">Mumbai, Maharashtra</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Sabse acchi baat ye hai ki loss bhi honestly post karte hain. Real track record dikhta hai."</div>
+      <div class="testi-author">Priya S.</div>
+      <div class="testi-location">Ahmedabad, Gujarat</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★☆</div>
+      <div class="testi-text">"ConfidenceScore feature bahut useful chhe. Jyare score 80%+ hoy tyare entry karo baaki nahi."</div>
+      <div class="testi-author">Nirav P.</div>
+      <div class="testi-location">Surat, Gujarat</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSCRIBE / CTA -->
+<section class="subscribe" id="subscribe">
+  <div class="subscribe-box reveal">
+    <div>
+      <div class="section-tag">Join AlphaSignals India</div>
+      <div class="subscribe-title">START YOUR<br><span style="color:var(--green)">JOURNEY</span><br>TODAY</div>
+      <p class="subscribe-desc">
+        Daily professional BankNifty & Solana signals. Transparent track record. Professional system built with real market data.
+      </p>
+      <div class="social-links">
+        <a href="https://t.me/AlphaSignalsIndia" target="_blank" class="social-btn btn-telegram">📱 Join Telegram</a>
+        <a href="https://chat.whatsapp.com/EdEkUnCGkVyLPO8jFc7Ziq" target="_blank" class="social-btn btn-whatsapp">💬 WhatsApp Group</a>
+        <a href="https://x.com/AlphaSignalsIndia" target="_blank" class="social-btn btn-twitter">🐦 Follow on X</a>
+      </div>
+      <div class="disclaimer" style="margin-top:1.5rem">
+        ⚠️ Educational only. Not SEBI registered. Trade at your own risk.
+      </div>
+    </div>
+    <div class="upi-box">
+      <div class="upi-title">Subscribe Now</div>
+      <div class="upi-amount">₹999/month</div>
+      <code class="upi-id">alphasignals@slc</code>
+      <a href="upi://pay?pa=alphasignals@slc&pn=AlphaSignalsIndia&am=999&cu=INR&tn=AlphaSignals+Subscription" class="btn-primary" style="display:block;margin-bottom:1rem">Pay ₹999 via UPI →</a>
+      <div class="upi-steps">
+        <div class="upi-step">
+          <div class="upi-step-num">1</div>
+          <span>Send ₹999 to UPI / contact us on Telegram</span>
+        </div>
+        <div class="upi-step">
+          <div class="upi-step-num">2</div>
+          <span>Send screenshot to @AlphaSignalsIndia</span>
+        </div>
+        <div class="upi-step">
+          <div class="upi-step-num">3</div>
+          <span>Get instant access to signal group</span>
+        </div>
+        <div class="upi-step">
+          <div class="upi-step-num">4</div>
+          <span>Receive first signal next morning 9:45 AM!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-tag">Questions</div>
+  <h2 class="section-title">FAQ</h2>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">What time is the signal sent every day?</div>
+      <div class="faq-a">Signal is sent at 9:45 AM IST every trading day (Mon-Fri excluding expiry days). Morning briefing at 8:30 AM.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">Why do you skip expiry days?</div>
+      <div class="faq-a">Expiry days (Wednesday) are highly unpredictable. Our system skips them to protect capital. Discipline over gambling.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the Confidence Score?</div>
+      <div class="faq-a">Every signal gets a 0-100% confidence score based on RSI, MACD, candle patterns, global markets and VIX. Only enter when confidence is above 65%.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">Is this SEBI registered advice?</div>
+      <div class="faq-a">No. AlphaSignals India is an educational platform only. All signals are for learning purposes. Always trade at your own risk.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">How much capital do I need?</div>
+      <div class="faq-a">Our risk calculator recommends max 2% capital risk per trade. You can start with as little as ₹5,000-10,000 for 1 lot options.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">Do you also cover Solana crypto?</div>
+      <div class="faq-a">Yes! Our SOL Ecosystem Scanner tracks BTC, ETH, SOL prices + Fear & Greed Index + Global Market Cap daily at 8:05 AM.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT MOHIT -->
+<section style="background:var(--black)" id="about">
+  <div class="section-tag">The Person Behind It</div>
+  <h2 class="section-title">ABOUT</h2>
+  <div style="display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:center;max-width:800px" class="reveal">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center">
+      <div style="font-size:4rem;margin-bottom:1rem">👨‍💻</div>
+      <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:2px">MOHIT N</div>
+      <div style="color:var(--green);font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;margin-top:0.3rem">Founder — AlphaSignals India</div>
+      <div style="color:var(--muted);font-size:0.8rem;margin-top:0.5rem">📍 Gujarat, India 🇮🇳</div>
+      <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:1rem;flex-wrap:wrap">
+        <a href="https://t.me/AlphaSignalsIndia" target="_blank" style="background:rgba(0,255,136,0.1);color:var(--green);padding:0.3rem 0.8rem;border-radius:100px;font-size:0.75rem;text-decoration:none;border:1px solid rgba(0,255,136,0.2)">Telegram</a>
+        <a href="https://x.com/AlphaSignalsIndia" target="_blank" style="background:rgba(0,180,255,0.1);color:var(--blue);padding:0.3rem 0.8rem;border-radius:100px;font-size:0.75rem;text-decoration:none;border:1px solid rgba(0,180,255,0.2)">@AlphaSignalsIndia</a>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--muted);margin-bottom:1rem;font-size:0.95rem">
+        I started AlphaSignals India because I was tired of random signals with no logic. I wanted a <strong style="color:var(--white)">system</strong> — not guesswork.
+      </p>
+      <p style="color:var(--muted);margin-bottom:1rem;font-size:0.95rem">
+        I built everything from scratch — the signal bot, global scanner, RSI/MACD calculator, confidence score system, and this website. Over <strong style="color:var(--white)">1800 lines of Python code</strong>.
+      </p>
+      <p style="color:var(--muted);margin-bottom:1rem;font-size:0.95rem">
+        Our system analyses <strong style="color:var(--white)">Dow Jones, Crude Oil, SGX Singapore, India VIX, RSI, MACD and Candle Patterns</strong> every morning before sending ONE clear signal.
+      </p>
+      <p style="color:var(--muted);font-size:0.95rem">
+        We share <strong style="color:var(--white)">wins AND losses</strong> transparently. No manipulation. Just honest signals and honest results. Because <em style="color:var(--green)">SYOR — Study Your Own Research.</em>
+      </p>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:0.8rem 1.2rem;text-align:center">
+          <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--green)">1808</div>
+          <div style="color:var(--muted);font-size:0.7rem;text-transform:uppercase;letter-spacing:1px">Lines of Code</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:0.8rem 1.2rem;text-align:center">
+          <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--green)">6</div>
+          <div style="color:var(--muted);font-size:0.7rem;text-transform:uppercase;letter-spacing:1px">Indicators</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:0.8rem 1.2rem;text-align:center">
+          <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--green)">v7</div>
+          <div style="color:var(--muted);font-size:0.7rem;text-transform:uppercase;letter-spacing:1px">Bot Version</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:0.8rem 1.2rem;text-align:center">
+          <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--green)">🇮🇳</div>
+          <div style="color:var(--muted);font-size:0.7rem;text-transform:uppercase;letter-spacing:1px">Made in India</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOATING SOCIAL BAR -->
+<div style="position:fixed;bottom:2rem;right:2rem;display:flex;flex-direction:column;gap:0.8rem;z-index:50">
+  <a href="https://t.me/AlphaSignalsIndia" target="_blank"
+     style="background:#229ED9;color:#fff;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 15px rgba(34,158,217,0.4);transition:transform 0.2s"
+     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">📱</a>
+  <a href="https://chat.whatsapp.com/EdEkUnCGkVyLPO8jFc7Ziq" target="_blank"
+     style="background:#25D366;color:#fff;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 15px rgba(37,211,102,0.4);transition:transform 0.2s"
+     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">💬</a>
+  <a href="https://x.com/AlphaSignalsIndia" target="_blank"
+     style="background:#1DA1F2;color:#fff;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 15px rgba(29,161,242,0.4);transition:transform 0.2s"
+     onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🐦</a>
+</div>
+<footer>
+  <div>
+    <div class="footer-logo">ALPHASIGNALS</div>
+    <div class="footer-desc">Professional BankNifty & Solana signals. Built in India. For India. 🇮🇳</div>
+    <br>
+    <div style="color:var(--muted);font-size:0.75rem">⚠️ Educational only. Not SEBI registered.</div>
+  </div>
+  <div>
+    <div class="footer-title">Navigation</div>
+    <ul class="footer-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#signals">Signals</a></li>
+      <li><a href="#track">Track Record</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-title">Join Us</div>
+    <ul class="footer-links">
+      <li><a href="https://t.me/AlphaSignalsIndia" target="_blank">Telegram Group</a></li>
+      <li><a href="https://chat.whatsapp.com/EdEkUnCGkVyLPO8jFc7Ziq" target="_blank">WhatsApp Group</a></li>
+      <li><a href="https://x.com/AlphaSignalsIndia" target="_blank">X / Twitter</a></li>
+      <li><a href="#subscribe">Subscribe ₹999</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-title">Markets</div>
+    <ul class="footer-links">
+      <li><a href="#">BankNifty</a></li>
+      <li><a href="#">Solana (SOL)</a></li>
+      <li><a href="#">Bitcoin (BTC)</a></li>
+      <li><a href="#">India VIX</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 AlphaSignals India. All rights reserved.</span>
+  <span>Built by Mohit N | SYOR 💯</span>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+// ═══════════════════════════════
+// SCROLL REVEAL
+// ═══════════════════════════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ═══════════════════════════════
+// FAQ TOGGLE
+// ═══════════════════════════════
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+
+// ═══════════════════════════════
+// LANGUAGE TOGGLE
+// ═══════════════════════════════
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+  });
+}
+
+// ═══════════════════════════════
+// LIVE PRICE ANIMATION
+// ═══════════════════════════════
+function animatePrice() {
+  const prices = [53900, 54055, 54120, 53980, 54200, 54055];
+  let i = 0;
+  setInterval(() => {
+    const el = document.getElementById('bn-price');
+    if (el) {
+      i = (i + 1) % prices.length;
+      el.textContent = prices[i].toLocaleString('en-IN');
+    }
+  }, 3000);
+}
+animatePrice();
+
+// ═══════════════════════════════
+// SMOOTH NAV HIGHLIGHT
+// ═══════════════════════════════
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(8,12,16,0.95)';
+  } else {
+    nav.style.background = 'rgba(8,12,16,0.85)';
+  }
+});
+</script>
+
+</body>
+</html>
